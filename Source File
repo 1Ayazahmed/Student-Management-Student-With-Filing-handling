@@ -1,0 +1,474 @@
+#include<iostream>
+#include<string>
+#include<conio.h>
+#include<iomanip>
+
+
+
+using namespace std;
+
+string arr1[20],arr2[20],arr3[20],arr4[20],arr5[20];
+
+int total=0;
+
+void enter()
+
+{
+
+		int ch=0;
+			system("cls");
+			cout<<"--------------------------------------------------------"<<endl;
+			cout<<"How Many Students Of Data Do You Want To Enter??"<<endl;
+
+			cin>>ch;
+
+			if(total==0)
+
+			{
+
+			total=ch+total;
+
+			for(int i=0;i<ch;i++)
+
+			{
+				cout<<"----------------------------------------"<<endl;
+
+				cout<<"\nEnter the Data of student: "<<i+1<<endl<<endl;
+
+				cout<<"Enter name: "<<endl<<endl;
+
+				cin>>arr1[i];
+
+				cout<<endl<<"Enter Roll no: "<<endl<<endl;
+				getline(cin,arr2[i]);
+				cin>>arr2[i];
+
+				cout<<endl<<"Enter course: "<<endl<<endl;
+
+				cin>>arr3[i];
+
+				cout<<endl<<"Enter class: "<<endl<<endl;
+				getline(cin,arr4[i]);
+
+				cin>>arr4[i];
+
+				cout<<endl<<"Enter contact: "<<endl<<endl;
+
+				cin>>arr5[i];
+			
+				
+
+			}
+			system("cls");
+
+	    	}
+
+	    	else
+
+	    	{
+
+	    		
+
+	    		for(int i=total;i<ch+total;i++)
+
+			{
+				system("cls");
+				cout<<"----------------------------------------"<<endl;
+
+				cout<<"\nEnter the Data of student: "<<i+1<<endl<<endl;
+
+				cout<<"Enter name: "<<endl;
+
+				cin>>arr1[i];
+
+				cout<<"Enter Roll no: "<<endl;
+
+				cin>>arr2[i];
+
+				cout<<"Enter course: "<<endl;
+
+				cin>>arr3[i];
+
+				cout<<"Enter class: "<<endl;
+
+				cin>>arr4[i];
+
+				cout<<"Enter contact; "<<endl;
+
+				cin>>arr5[i];
+
+			}
+
+			total=ch+total;
+
+			}
+
+	
+
+}
+
+void show()
+
+{
+	system("cls");
+	if(total==0)
+
+	{
+
+		cout<<"----------No data is entered----------"<<endl;
+
+	}
+
+	else{
+		cout<<endl<<"---------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
+		cout<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
+		for(int i=0;i<total;i++)
+
+	    		{
+	    		
+				cout<<setw(6)<<arr1[i]<<setw(32)<<arr2[i]<<setw(32)<<arr3[i]<<setw(32)<<arr4[i]<<setw(32)<<arr5[i]<<endl<<endl;
+
+
+	    	    }
+
+	    	}
+//	system("cls");
+}
+
+
+void search()
+
+{
+		system("cls");
+
+	if(total==0)
+
+	{
+
+		cout<<"No data is entered"<<endl;
+
+	}
+
+	else{
+
+	string rollno, contact;
+	int chs;
+	
+	cout<<"Press 1 To Seraching By Roll no."<<endl;
+	cout<<"Press 2 To Searching By Contact."<<endl;
+	cin>>chs;
+		switch(chs)
+		{
+			case 1:
+				cout<<"Enter the roll no of student"<<endl<<endl;
+
+				cin>>rollno;
+				cout<<endl<<"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
+
+				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
+				for(int i=0;i<total;i++)
+
+				{
+
+					if(rollno==arr2[i])
+
+					{
+
+						cout<<setw(6)<<arr1[i]<<setw(32)<<arr2[i]<<setw(32)<<arr3[i]<<setw(32)<<arr4[i]<<setw(32)<<arr5[i]<<endl<<endl;
+
+					}
+					
+				
+					
+				}
+				break;
+				
+			case 2:
+				cout<<"Enter the contact number of student"<<endl<<endl;
+				cin>>contact;
+				cout<<endl<<"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
+
+				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
+				for(int i=0;i<total;i++)
+
+				{
+
+					if(contact==arr5[i])
+
+					{
+
+						cout<<setw(6)<<arr1[i]<<setw(32)<<arr2[i]<<setw(32)<<arr3[i]<<setw(32)<<arr4[i]<<setw(32)<<arr5[i]<<endl<<endl;
+
+					}
+					
+
+				}
+				break;
+				
+				default:
+				cout<<"xxxxInvalid InputXXXX"<<endl;	
+				
+		
+		}
+			
+
+			}
+
+}
+
+void update()
+
+{
+		system("cls");
+
+	if(total==0)
+
+	{
+
+		cout<<"No data is entered"<<endl;
+
+	}
+
+	else{
+
+		string rollno;
+				cout<<"------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl;
+				cout<<"Enter the roll no of student which you want to update"<<endl;
+
+				cin>>rollno;
+
+				cout<<endl<<"\nPrevious data:"<<endl<<endl;
+				cout<<endl<<"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
+				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
+					for(int i=0;i<total;i++)
+
+				{
+
+					if(rollno==arr2[i])
+
+					{
+
+						cout<<setw(6)<<arr1[i]<<setw(32)<<arr2[i]<<setw(32)<<arr3[i]<<setw(32)<<arr4[i]<<setw(32)<<arr5[i]<<endl<<endl;
+	    	        	
+						cout<<endl<<"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
+	    	        	cout<<"\nEnter new data"<<endl<<endl;
+	    	        	cout<<"=================================================================================================================================================================================="<<endl<<endl;
+
+							cout<<"Enter name: ";
+
+				            cin>>arr1[i];
+
+				            cout<<"Enter Roll no: ";
+							getline(cin,arr2[i]);
+				            cin>>arr2[i];
+
+			             	cout<<"Enter course: ";
+							getline(cin,arr3[i]);
+				            cin>>arr3[i];
+
+				            cout<<"Enter class: ";
+							getline(cin,arr4[i]);
+				            cin>>arr4[i];
+
+				            cout<<"Enter contact: ";
+							getline(cin,arr5[i]);
+				            cin>>arr5[i];
+
+					}
+
+				}
+
+			}
+
+		}
+
+
+
+void deleterecord()
+
+{
+		system("cls");
+
+	if(total==0)
+
+	{
+
+		cout<<"No data is entered :("<<endl;
+
+	}
+
+	else{
+
+		int a;
+
+	        	cout<<"Press 1 to delete all record"<<endl;
+
+				cout<<"Press 2 to delete specific record"<<endl;
+
+				cin>>a;
+
+				if(a==1)
+
+				{
+
+					total=0;
+
+					cout<<"All record is deleted..!!"<<endl;
+
+				}
+
+				else if(a==2)
+
+				{
+
+				string rollno;
+				cout<<"------------------------------------------------------"<<endl;
+
+				cout<<"Enter the roll no of student which you wanted to delete"<<endl;
+				cout<<"------------------------------------------------------"<<endl;
+
+
+				cin>>rollno;
+
+				for(int i=0;i<total;i++)
+
+				{
+
+					if(rollno==arr2[i])
+
+					{
+
+						for(int j=i;j<total;j++)
+
+						{
+
+						arr1[j]=arr1[j+1];
+
+						arr2[j]=arr2[j+1];
+
+					    arr3[j]=arr3[j+1];
+
+						arr4[j]=arr4[j+1];
+
+						arr5[j]=arr5[j+1];
+
+				     	}
+
+					total--;
+					
+					
+					cout<<"Your required record is deleted"<<endl;
+
+					}
+
+				}
+
+				}
+
+				 
+
+			
+
+			else 
+
+			{
+
+				cout<<"Invalid input";
+
+			}
+
+}
+
+}
+
+int main()
+
+{
+
+	int value;
+	
+	cout<<setw(122)<<"WeLCOME TO STUDENT MANAGEMENT SYSTEM"<<endl;
+	cout<<setw(123)<<" ====================================="<<endl;
+	cout<<endl<<"Powered By:"<<endl<<"----------------------------"<<endl;
+	cout<<"Name: Ayaz"<<endl<<"Roll no: FA21-BSSE-0008"<<endl<<endl<<"-------------------------"<<endl<<"Name: Abdullah"<<endl<<"Roll no:FA21-BSSE-0009"<<endl<<endl<<"-------------------------"<<endl<<"Name: Ebad-ur-Rehman"<<endl<<"Roll no: FA21-BSSE-0020";
+	
+
+	while(true)
+
+	{
+//	system("cls");
+	
+	cout<<endl<<"---------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
+	cout<<"\n[Press 1 to enter data]"<<endl<<endl;
+
+	cout<<"[Press 2 to show data]"<<endl<<endl;
+
+	cout<<"[Press 3 to search data]"<<endl<<endl;
+
+	cout<<"[Press 4 to update data]"<<endl<<endl;
+
+	cout<<"[Press 5 to delete data]"<<endl<<endl;
+
+	cout<<"[Press 6 to exit]"<<endl;
+
+	cin>>value;
+
+	switch(value)
+
+	{
+
+		case 1:
+
+		cout<<"==================================================================================================================================================="<<endl;
+			enter();
+
+			break;
+
+		case 2:
+		
+		cout<<"====================================================================================================================================================="<<endl;
+
+			show();
+
+			break;
+
+		case 3:
+		cout<<"======================================================================================================================================================"<<endl;
+
+			search();
+
+			break;
+
+		case 4:
+		cout<<"========================================================================================================================================================"<<endl;
+
+			update();
+
+			break;
+
+		case 5:
+		cout<<"========================================================================================================================================================"<<endl;
+
+			deleterecord();
+
+			break;
+
+		case 6:
+		cout<<"========================================================================================================================================================="<<endl;
+
+			exit(0);
+
+			break;
+
+		default:
+
+			cout<<"XXXXXX-Invalid input-XXXXXX"<<endl;
+
+			break;
+
+	}
+	
+}
+cout<<endl;
+
+}

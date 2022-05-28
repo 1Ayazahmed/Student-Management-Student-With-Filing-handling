@@ -2,8 +2,9 @@
 #include<string>
 #include<conio.h>
 #include<iomanip>
+#include<fstream>
 
-// Maximize The Console Pannel For Better "UI" Experience.
+
 
 using namespace std;
 
@@ -27,10 +28,20 @@ void enter()
 			{
 
 			total=ch+total;
-
-			for(int i=0;i<ch;i++)
+			
+			ofstream filecreat;
+			filecreat.open("data.txt",ios::app);
+			if(!filecreat)
+			{
+				cout<<"File Currupted!";
+			}
+	    		
+			else{
+			
+	    		for(int i=0;i<ch;i++)
 
 			{
+				system("cls");
 				cout<<"----------------------------------------"<<endl;
 
 				cout<<"\nEnter the Data of student: "<<i+1<<endl<<endl;
@@ -40,7 +51,7 @@ void enter()
 				cin>>arr1[i];
 
 				cout<<endl<<"Enter Roll no: "<<endl<<endl;
-				getline(cin,arr2[i]);
+
 				cin>>arr2[i];
 
 				cout<<endl<<"Enter course: "<<endl<<endl;
@@ -48,27 +59,47 @@ void enter()
 				cin>>arr3[i];
 
 				cout<<endl<<"Enter class: "<<endl<<endl;
-				getline(cin,arr4[i]);
 
 				cin>>arr4[i];
 
-				cout<<endl<<"Enter contact: "<<endl<<endl;
+				cout<<endl<<"Enter contact; "<<endl<<endl;
 
 				cin>>arr5[i];
+				
+				
+				filecreat<<arr1[i]<<" ";
+				filecreat<<arr2[i]<<" ";
+				filecreat<<arr3[i]<<" ";
+				filecreat<<arr4[i]<<" ";
+				filecreat<<arr5[i]<<" ";
+				filecreat<<"\n";
 			
+			filecreat.close();
+		
 				
 
-			}
+		}
+		}
 			system("cls");
 
 	    	}
+	    	
+	    	
+	    
 
 	    	else
 
 	    	{
-
+					
+			ofstream filecreat;
+			filecreat.open("data.txt",ios::app);
+			if(!filecreat)
+			{
+				cout<<"File Currupted!";
+			}
 	    		
-
+			else{
+			
 	    		for(int i=total;i<ch+total;i++)
 
 			{
@@ -96,16 +127,33 @@ void enter()
 				cout<<"Enter contact; "<<endl;
 
 				cin>>arr5[i];
+				
+				
+				filecreat<<arr1[i]<<" ";
+				filecreat<<arr2[i]<<" ";
+				filecreat<<arr3[i]<<" ";
+				filecreat<<arr4[i]<<" ";
+				filecreat<<arr5[i]<<" ";
+				filecreat<<"\n";
+			
+			filecreat.close();
+		
+				
 
-			}
+		}
+		}
 
 			total=ch+total;
+			
+			
+			
+			
 
-			}
 
-	
+		}
 
 }
+
 
 void show()
 
@@ -120,19 +168,34 @@ void show()
 	}
 
 	else{
+		
 		cout<<endl<<"---------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
-		cout<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
-		for(int i=0;i<total;i++)
+	
+			string stdname;	
+			string stdrollno;
+			string stdcontact;
+			string stdcourse;
+			string stdclass;
+			
+			ifstream filein;
+			filein.open("data.txt",ios::in);
+			while(!filein.eof())
+			{
+				filein >> stdname;
+				filein >> stdrollno;
+				filein >> stdcourse;
+				filein >> stdclass;
+				filein >> stdcontact;
+				filein.ignore(2);
+				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
+				
+				cout<<setw(6)<<stdname<<setw(32)<<stdrollno<<setw(32)<<stdcourse<<setw(32)<<stdclass<<setw(32)<<stdcontact<<endl<<endl;
 
-	    		{
-	    		
-				cout<<setw(6)<<arr1[i]<<setw(32)<<arr2[i]<<setw(32)<<arr3[i]<<setw(32)<<arr4[i]<<setw(32)<<arr5[i]<<endl<<endl;
+					
+				
+			}filein.close();
 
-
-	    	    }
-
-	    	}
-//	system("cls");
+}
 }
 
 
@@ -154,56 +217,87 @@ void search()
 	string rollno, contact;
 	int chs;
 	
-	cout<<"Press 1 To Seraching By Roll no."<<endl;
+	cout<<"Press 1 To Seraching By Roll no."<<endl<<endl;
 	cout<<"Press 2 To Searching By Contact."<<endl;
 	cin>>chs;
 		switch(chs)
 		{
-			case 1:
-				cout<<"Enter the roll no of student"<<endl<<endl;
+			case 1:{
+		
+			cout<<"Enter the roll no of student"<<endl<<endl;
+		
+			cin>>rollno;
+			cout<<endl<<"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
 
-				cin>>rollno;
-				cout<<endl<<"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
-
+		
+			string stdname;	
+			string stdrollno;
+			string stdcontact;
+			string stdcourse;
+			string stdclass;
+			
+			ifstream filein;
+			filein.open("data.txt",ios::in);
+			while(!filein.eof())
+			{
+				filein >> stdname;
+				filein >> stdrollno;
+				filein >> stdcourse;
+				filein >> stdclass;
+				filein >> stdcontact;
+				filein.ignore(2);
 				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
-				for(int i=0;i<total;i++)
-
-				{
-
-					if(rollno==arr2[i])
+				
+				if(rollno==stdrollno)
 
 					{
 
-						cout<<setw(6)<<arr1[i]<<setw(32)<<arr2[i]<<setw(32)<<arr3[i]<<setw(32)<<arr4[i]<<setw(32)<<arr5[i]<<endl<<endl;
+						cout<<setw(6)<<stdname<<setw(32)<<stdrollno<<setw(32)<<stdcourse<<setw(32)<<stdclass<<setw(32)<<stdcontact<<endl<<endl;
 
 					}
-					
 				
-					
+				}filein.close();	
+			break;
+			
 				}
-				break;
+			case 2:{
 				
-			case 2:
+			
 				cout<<"Enter the contact number of student"<<endl<<endl;
 				cin>>contact;
 				cout<<endl<<"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
-
+				
+			string stdname;	
+			string stdrollno;
+			string stdcontact;
+			string stdcourse;
+			string stdclass;
+			
+			ifstream filein;
+			filein.open("data.txt",ios::in);
+			while(!filein.eof())
+			{
+				filein >> stdname;
+				filein >> stdrollno;
+				filein >> stdcourse;
+				filein >> stdclass;
+				filein >> stdcontact;
+				filein.ignore(2);
 				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
-				for(int i=0;i<total;i++)
-
-				{
-
-					if(contact==arr5[i])
+				
+				if(contact==stdcontact)
 
 					{
 
-						cout<<setw(6)<<arr1[i]<<setw(32)<<arr2[i]<<setw(32)<<arr3[i]<<setw(32)<<arr4[i]<<setw(32)<<arr5[i]<<endl<<endl;
+						cout<<setw(6)<<stdname<<setw(32)<<stdrollno<<setw(32)<<stdcourse<<setw(32)<<stdclass<<setw(32)<<stdcontact<<endl<<endl;
 
 					}
-					
-
+				
+				}filein.close();	
+			break;
+			
 				}
-				break;
+			
 				
 				default:
 				cout<<"xxxxInvalid InputXXXX"<<endl;	
@@ -236,52 +330,87 @@ void update()
 				cout<<"Enter the roll no of student which you want to update"<<endl;
 
 				cin>>rollno;
-
+				
 				cout<<endl<<"\nPrevious data:"<<endl<<endl;
 				cout<<endl<<"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
-				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
-					for(int i=0;i<total;i++)
-
+				
+				
+				
+	
+			string stdname;	
+			string stdrollno;
+			string stdcontact;
+			string stdcourse;
+			string stdclass;
+			
+			ifstream filein;
+			filein.open("data.txt",ios::in);
+			while(!filein.eof())
+			{
+				filein >> stdname;
+				filein >> stdrollno;
+				filein >> stdcourse;
+				filein >> stdclass;
+				filein >> stdcontact;
+				filein.ignore(2);
+				
+				if(rollno==stdrollno)
 				{
-
-					if(rollno==arr2[i])
-
-					{
-
-						cout<<setw(6)<<arr1[i]<<setw(32)<<arr2[i]<<setw(32)<<arr3[i]<<setw(32)<<arr4[i]<<setw(32)<<arr5[i]<<endl<<endl;
-	    	        	
-						cout<<endl<<"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
-	    	        	cout<<"\nEnter new data"<<endl<<endl;
-	    	        	cout<<"=================================================================================================================================================================================="<<endl<<endl;
-
-							cout<<"Enter name: ";
-
-				            cin>>arr1[i];
-
-				            cout<<"Enter Roll no: ";
-							getline(cin,arr2[i]);
-				            cin>>arr2[i];
-
-			             	cout<<"Enter course: ";
-							getline(cin,arr3[i]);
-				            cin>>arr3[i];
-
-				            cout<<"Enter class: ";
-							getline(cin,arr4[i]);
-				            cin>>arr4[i];
-
-				            cout<<"Enter contact: ";
-							getline(cin,arr5[i]);
-				            cin>>arr5[i];
-
-					}
-
+				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
+				
+				cout<<setw(6)<<stdname<<setw(32)<<stdrollno<<setw(32)<<stdcourse<<setw(32)<<stdclass<<setw(32)<<stdcontact<<endl<<endl;
+				
 				}
+				
+			}filein.close();
+				
+					ofstream filecreat;
+			filecreat.open("data.txt",ios::app);
+			if(!filecreat)
+			{
+				cout<<"File Currupted!";
+			}
+			else{
+			
+				cout<<endl<<"--------------------------------------------------------------------------------------------------------------------------------------------------------------------------"<<endl<<endl;
+	    	    cout<<"\nEnter new data"<<endl<<endl;
+	    		cout<<"=================================================================================================================================================================================="<<endl<<endl;
+				
+
+				cout<<"Enter name: "<<endl;
+
+				cin>>arr1[20];
+
+				cout<<"Enter Roll no: "<<endl;
+
+				cin>>arr2[20];
+
+				cout<<"Enter course: "<<endl;
+
+				cin>>arr3[20];
+
+				cout<<"Enter class: "<<endl;
+
+				cin>>arr4[20];
+
+				cout<<"Enter contact; "<<endl;
+
+				cin>>arr5[20];
+				
+				
+				filecreat<<arr1[20]<<" ";
+				filecreat<<arr2[20]<<" ";
+				filecreat<<arr3[20]<<" ";
+				filecreat<<arr4[20]<<" ";
+				filecreat<<arr5[20]<<" ";
+				filecreat<<"\n";
+			
+			filecreat.close();
 
 			}
 
 		}
-
+}
 
 
 void deleterecord()
@@ -388,11 +517,11 @@ int main()
 	int value;
 	
 	cout<<setw(122)<<"WeLCOME TO STUDENT MANAGEMENT SYSTEM"<<endl;
-	cout<<setw(123)<<" ====================================="<<endl;
+	cout<<setw(123)<<" ====================================="<<endl<<endl;
 	cout<<endl<<"Powered By:"<<endl<<"----------------------------"<<endl;
 	cout<<"Name: Ayaz"<<endl<<"Roll no: FA21-BSSE-0008"<<endl<<endl<<"-------------------------"<<endl<<"Name: Abdullah"<<endl<<"Roll no:FA21-BSSE-0009"<<endl<<endl<<"-------------------------"<<endl<<"Name: Ebad-ur-Rehman"<<endl<<"Roll no: FA21-BSSE-0020";
 	
-
+cout<<endl<<endl<<endl<<"<****Maximize The Console Panel For Better UI Experience...!****> ";
 	while(true)
 
 	{
@@ -411,8 +540,7 @@ int main()
 
 	cout<<"[Press 6 to exit]"<<endl;
 
-	cin>>value;
-
+	cin>>value;			
 	switch(value)
 
 	{
@@ -461,14 +589,16 @@ int main()
 			break;
 
 		default:
-
+			
 			cout<<"XXXXXX-Invalid input-XXXXXX"<<endl;
 
 			break;
 
 	}
+	}
 	
-}
+	
+
 cout<<endl;
 
 }

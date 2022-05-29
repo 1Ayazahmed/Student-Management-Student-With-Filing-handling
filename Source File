@@ -4,17 +4,15 @@
 #include<iomanip>
 #include<fstream>
 
-
-
 using namespace std;
+	string arr1[100],arr2[100],arr3[100],arr4[100],arr5[100];
 
-string arr1[20],arr2[20],arr3[20],arr4[20],arr5[20];
 
 int total=0;
 
 void enter()
 
-{
+{	
 
 		int ch=0;
 			system("cls");
@@ -22,7 +20,8 @@ void enter()
 			cout<<"How Many Students Of Data Do You Want To Enter??"<<endl;
 
 			cin>>ch;
-
+		
+			
 			if(total==0)
 
 			{
@@ -74,11 +73,11 @@ void enter()
 				filecreat<<arr5[i]<<" ";
 				filecreat<<"\n";
 			
-			filecreat.close();
+			
 		
 				
 
-		}
+		}filecreat.close();
 		}
 			system("cls");
 
@@ -88,8 +87,7 @@ void enter()
 	    
 
 	    	else
-
-	    	{
+			{
 					
 			ofstream filecreat;
 			filecreat.open("data.txt",ios::app);
@@ -136,11 +134,11 @@ void enter()
 				filecreat<<arr5[i]<<" ";
 				filecreat<<"\n";
 			
-			filecreat.close();
+			
 		
 				
 
-		}
+		}filecreat.close();
 		}
 
 			total=ch+total;
@@ -176,7 +174,7 @@ void show()
 			string stdcontact;
 			string stdcourse;
 			string stdclass;
-			
+			cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;		
 			ifstream filein;
 			filein.open("data.txt",ios::in);
 			while(!filein.eof())
@@ -187,7 +185,7 @@ void show()
 				filein >> stdclass;
 				filein >> stdcontact;
 				filein.ignore(2);
-				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
+				
 				
 				cout<<setw(6)<<stdname<<setw(32)<<stdrollno<<setw(32)<<stdcourse<<setw(32)<<stdclass<<setw(32)<<stdcontact<<endl<<endl;
 
@@ -235,7 +233,7 @@ void search()
 			string stdcontact;
 			string stdcourse;
 			string stdclass;
-			
+			cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
 			ifstream filein;
 			filein.open("data.txt",ios::in);
 			while(!filein.eof())
@@ -246,7 +244,7 @@ void search()
 				filein >> stdclass;
 				filein >> stdcontact;
 				filein.ignore(2);
-				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
+			
 				
 				if(rollno==stdrollno)
 
@@ -272,7 +270,7 @@ void search()
 			string stdcontact;
 			string stdcourse;
 			string stdclass;
-			
+			cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
 			ifstream filein;
 			filein.open("data.txt",ios::in);
 			while(!filein.eof())
@@ -283,7 +281,7 @@ void search()
 				filein >> stdclass;
 				filein >> stdcontact;
 				filein.ignore(2);
-				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
+			
 				
 				if(contact==stdcontact)
 
@@ -342,7 +340,7 @@ void update()
 			string stdcontact;
 			string stdcourse;
 			string stdclass;
-			
+			cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
 			ifstream filein;
 			filein.open("data.txt",ios::in);
 			while(!filein.eof())
@@ -356,7 +354,7 @@ void update()
 				
 				if(rollno==stdrollno)
 				{
-				cout<<endl<<setw(6)<<"---Name---"<<setw(32)<<"---Roll no---"<<setw(32)<<"---Course---"<<setw(32)<<"---Class---"<<setw(32)<<"---Contact---"<<endl<<endl<<endl;
+				
 				
 				cout<<setw(6)<<stdname<<setw(32)<<stdrollno<<setw(32)<<stdcourse<<setw(32)<<stdclass<<setw(32)<<stdcontact<<endl<<endl;
 				
@@ -364,7 +362,7 @@ void update()
 				
 			}filein.close();
 				
-					ofstream filecreat;
+			ofstream filecreat;
 			filecreat.open("data.txt",ios::app);
 			if(!filecreat)
 			{
@@ -539,7 +537,7 @@ cout<<endl<<endl<<endl<<"<****Maximize The Console Panel For Better UI Experienc
 	cout<<"[Press 5 to delete data]"<<endl<<endl;
 
 	cout<<"[Press 6 to exit]"<<endl;
-
+	
 	cin>>value;			
 	switch(value)
 
@@ -548,6 +546,8 @@ cout<<endl<<endl<<endl<<"<****Maximize The Console Panel For Better UI Experienc
 		case 1:
 
 		cout<<"==================================================================================================================================================="<<endl;
+		cout<<"--------------------------------------------------------"<<endl;
+		
 			enter();
 
 			break;
